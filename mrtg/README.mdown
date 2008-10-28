@@ -1,0 +1,149 @@
+
+  ############################################################################
+  # All the scripts available in this package are ruby scripts and are       #
+  # designed to be used with mrtg to build statistics.                       #
+  #                                                                          #
+  # If you have any problem feel free to contact the author: nico@bounga.org #
+  #                                                                          #
+  ############################################################################
+
+
+================================================================================
+
+## bandwidth.rb
+
+This script can be used to monitor your bandwith usage.
+
+You should add something like that to your mrtg config file:
+
+	Target[net]: `/path/to/bandwidth.rb`
+	Title[net]: Global Bandwidth Usage
+	PageTop[net]: Global Bandwidth Usage
+	MaxBytes[net]: 5000000000
+	Options[net]: growright, nobanner, pngdate, nopercent
+	YLegend[net]: Bytes/s
+	ShortLegend[net]: Bytes/s
+	Legend1[net]: In
+	Legend2[net]: Out
+	LegendI[net]: In
+	LegendO[net]: Out
+	
+
+## ping.rb
+
+This script can be used to monitor your ping to a given host.
+
+You should add something like that to your mrtg config file:
+
+	Target[ping]: `/path/to/ping.rb`
+	Title[ping]: Ping
+	PageTop[ping]: Ping
+	MaxBytes[ping]: 100
+	AbsMax[ping]: 300
+	Options[ping]: gauge, growright, nobanner, pngdate, nopercent
+	Unscaled[ping]: dwmy
+	YLegend[ping]: ms
+	ShortLegend[ping]: ms
+	Legend1[ping]: Min Time
+	Legend2[ping]: Max Time
+	LegendI[ping]: Min Time
+	LegendO[ping]: Max Time
+
+
+## spam.rb
+
+This script can be used to give you number of filtered spams (or
+anything else) using a file to get the current number of spams catched.
+
+You should add something like that to your mrtg config file:
+
+	Target[spam]: `/path/to/spam.rb`
+	Options[spam]: perhour, noi, growright, nobanner, pngdate, nopercent
+	MaxBytes[spam]: 1000
+	YLegend[spam]: spams/hour
+	ShortLegend[spam]: spams/hour
+	LegendO[spam]: spams
+	Legend2[spam]: spams
+
+## uptime.rb
+
+This script can be used to give you the current system uptime.
+
+You should add something like that to your mrtg config file:
+
+	Target[uptime]: `/path/to/uptime.rb`
+	Options[uptime]: noi, gauge, growright, nobanner, pngdate, nopercent
+	MaxBytes[uptime]: 1000
+	YLegend[uptime]: days
+	ShortLegend[uptime]: days
+	LegendO[uptime]: Uptime
+	Legend2[uptime]: Uptime
+
+## volume.rb
+
+This script can be used to give you volume exchanged on a given interface.
+
+You should add something like that to your mrtg config file:
+
+	Target[vol]: `/path/to/volume.rb`
+	Options[vol]: gauge, growright, nobanner, pngdate, nopercent
+	Maxbytes[vol]: 5000000000
+	Title[vol]: Volume Exchanged
+	PageTop[vol]: Volume Exchanged
+	YLegend[vol]: Bytes
+	ShortLegend[vol]: Bytes
+	Legend1[vol]: In
+	Legend2[vol]: Out
+	LegendI[vol]: In
+	LegendO[vol]: Out
+
+
+## webstats.rb
+
+This script can be used to apache hits and apache current/total traffic.
+
+You should add something like that to your mrtg config file:
+
+	# hits
+	Target[apache_hits]: `/path/to/webstats.rb hits`
+	Options[apache_hits]: perhour, noi, growright, nobanner, pngdate, nopercent
+	MaxBytes[apache_hits]: 1000000
+	YLegend[apache_hits]: hits/hour
+	ShortLegend[apache_hits]: hits/hour
+	LegendO[apache_hits]: Hits:
+	Legend2[apache_hits]: Hits
+	Legend4[apache_hits]: Max Hits
+	Title[apache_hits]: Apache Hits
+	PageTop[apache_hits]: Apache Hits
+	WithPeak[apache_hits]: wmy
+
+	# current traffic
+	Target[apache_traffic]: `/path/to/webstats.rb bytes`
+	Options[apache_traffic]: noi, growright, nobanner, pngdate, nopercent
+	MaxBytes[apache_traffic]: 120000
+	AbsMax[apache_traffic]: 150000
+	YLegend[apache_traffic]: Bytes/s
+	ShortLegend[apache_traffic]: Bytes/s
+	LegendO[apache_traffic]: Apache Traffic:
+	Legend2[apache_traffic]: Current Apache Traffic
+	Legend4[apache_traffic]: Max Apache Traffic
+	Title[apache_traffic]: Current Apache Traffic
+	PageTop[apache_traffic]: Current Apache Traffic
+	WithPeak[apache_traffic]: wmy
+
+	# total traffic
+	Target[total_apache_traffic]: `/path/to/webstats.rb bytes`
+	Options[total_apache_traffic]: noi, gauge, growright, nobanner, pngdate, nopercent
+	MaxBytes[total_apache_traffic]: 200000000
+	YLegend[total_apache_traffic]: Bytes
+	ShortLegend[total_apache_traffic]: Bytes
+	LegendO[total_apache_traffic]: Total Apache Traffic:
+	Legend2[total_apache_traffic]: Total Apache Traffic
+	Title[total_apache_traffic]: Total Apache Traffic
+	PageTop[total_apache_traffic]: Total Apache Traffic
+
+---
+
+Hope it'll help you !
+
+Nicolas Cavigneaux (http://www.bounga.org)
