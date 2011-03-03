@@ -3,7 +3,7 @@
 # 
 #  RandomHexa
 # 
-#  Generate reproductible random array of hexa colors
+#  Generate reproducible random array of hexa colors
 #  
 #  Created by Nicolas Cavigneaux on 2011-03-04.
 #  Copyright 2011 Bounga. All rights reserved.
